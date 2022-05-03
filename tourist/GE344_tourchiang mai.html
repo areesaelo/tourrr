@@ -1,0 +1,384 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<!-- Link library leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+crossorigin="" />
+
+ <!-- W3 CSS template -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+crossorigin="">
+</script>
+
+ <style>
+#mapid {
+height: 800px;
+}
+</style>
+<title>Tourist map</title>
+</head>
+<body>
+<br>
+  <center><h1 style="color: white;">สถานที่ท่องเที่ยวจังหวัด เชียงใหม่🚙🚕🚗ツ</h1></center>
+    <body bgcolor ='6699FF'>
+<br>
+<!-- แบ่งหน้าจอ -->
+<div class="w3-row">
+<div id="mapid" class="w3-half"></div>
+<div id="content" class="w3-half">
+<table class="w3-table w3-striped">
+<tr>
+<th>ชื่อแหล่งท่องเที่ยว</th>
+<th>ประเภท</th>
+<th>ระดับ</th>
+</tr>
+<tr>
+<td>น้ำตก A</td>
+<td>ธรรมชาติ</td>
+<td>A</td>
+</tr>
+</table>
+</div>
+</div>
+
+<!-- เรียกแผนที่ขึ้นมาแสดง -->
+<script>
+//เรียกแผนที่
+var map = L.map("mapid").setView([18.88931573396365, 98.981131483952],8);
+//basemap1
+var osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+//basemap2
+var memomaps = L.tileLayer("https://tileserver.memomaps.de/tilegen/{z}/{x}/{y}.png")
+.addTo(map);
+//group layers (1+2)
+var baseMaps ={
+  //ชื่อชั้นข้อมูล : ตัวแปร
+  OSM:osm,
+  OPNVKarte:memomaps,
+};
+//add data
+var tourpoint = {
+type: "FeatureCollection",
+name: "tour_plk",
+crs: {
+type: "name",
+properties: { name: "urn:ogc:def:crs:OGC:1.3:CRS84" },
+},
+features: [
+{
+type: "Feature",
+properties: {
+Name: "อุทยานหลวงราชพฤกษ์",
+Type: "อุทยานและวนอุทยาน",
+FID_1: 1358.0,
+CHANGWAT: "เชียงใหม่",
+PROVINCE_1: "Chiang mai",
+REGION: "ภาคเหนือ",
+level: "🌟🌟🌟🌟",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[98.9239323679156,18.75065717293333, ]]
+},
+},
+{
+type: "Feature",
+properties: {
+Name: "เวียงกุมกาม",
+Type: "สถานที่สำคัญทางประวัติศาสตร์",
+FID_1: 1357.0,
+CHANGWAT: "เชียงใหม่",
+PROVINCE_1: "Chiang mai",
+REGION: "ภาคเหนือ",
+level: "🌟🌟🌟🌟",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[98.9950024685077,18.75127068001058]],
+},
+},
+{
+type: "Feature",
+properties: {
+Name: "เมืองไดโนเสาร์",
+Type: "กิจกกรมพิเศษ",
+FID_1: 1362.0,
+CHANGWAT: "เชียงใหม่",
+PROVINCE_1: "Chiang mai",
+REGION: "ภาคเหนือ",
+level: "🌟🌟🌟🌟",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[98.99740572791896,18.84032459862835]],
+},
+},
+{
+type: "Feature",
+properties: {
+Name: "หมู่บ้านชาวเขาเผ่าม้งดอยปุย",
+Type: "กิจกรรมพิเศษ",
+FID_1: 1364.0,
+CHANGWAT: "เชียงใหม่",
+PROVINCE_1: "Chiang mai",
+REGION: "ภาคเหนือ",
+level: "🌟🌟🌟🌟",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[98.87987847174585,18.82471914499404]],
+},
+},
+{
+type: "Feature",
+properties: {
+Name: "หอคำหลวง",
+Type: "กิจกรรมพิเศษ",
+FID_1: 1355.0,
+CHANGWAT: "เชียงใหม่",
+PROVINCE_1: "Chiang mai",
+REGION: "ภาคเหนือ",
+level: "🌟🌟🌟🌟",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[98.92084475407694,18.762648803595056]],
+},
+},
+{
+type: "Feature",
+properties: {
+Name: "เชียงใหม่ไนท์ซาฟารี",
+Type: "สวนสัตว์",
+FID_1: 1365.0,
+CHANGWAT: "เชียงใหม่",
+PROVINCE_1: "Chiang mai",
+REGION: "ภาคเหนือ",
+level: "🌟🌟🌟🌟",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[ 98.91775484930898,18.74736943245415]],
+},
+},
+{
+type: "Feature",
+properties: {
+Name: "สวนสัตว์เชียงใหม่",
+Type: "สวนสัตว์",
+FID_1: 733.0,
+CHANGWAT: "เชียงใหม",
+PROVINCE_1: "Chiang mai",
+REGION: "ภาคเหนือ",
+level: "🌟🌟🌟🌟",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[ 98.94930838339958,18.843019664448395]],
+},
+},
+{
+type: "Feature",
+properties: {
+Name: "ประตูท่าแพ",
+Type: "สถานที่สำคัญทางประวัติศาสตร์",
+FID_1: 1359.0,
+CHANGWAT: "เชียงใหม่",
+PROVINCE_1: "Chiang mai",
+REGION: "ภาคเหนือ",
+level: "🌟🌟🌟🌟",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[98.9934115522595,18.787864859344545]],
+},
+},
+{
+type: "Feature",
+properties: {
+Name: "น้ำตกห้วยแก้ว",
+Type: "ธรรมชาติ",
+FID_1: 603.0,
+CHANGWAT: "เชียงใหม่",
+PROVINCE_1: "Chiang mai",
+REGION: "ภาคเหนือ",
+level: "🌟🌟🌟🌟",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[98.94415955856729,18.813044663712528]],
+},
+},
+{
+type: "Feature",
+properties: {
+Name: "อ่างแก้ว ม.เชียงใหม่",
+Type: "อุทยานและวนอุทยาน",
+FID_1: 611.0,
+CHANGWAT: "เชียงใหม่",
+PROVINCE_1: "Chiang mai",
+REGION: "ภาคเหนือ",
+level: "🌟🌟🌟🌟",
+},
+geometry: { type: "MultiPoint", coordinates: [[98.9502535374152,18.806179299424674]] },
+},
+{
+type: "Feature",
+properties: {
+Name: "สวนน้ำแกรนด์แคนยอน",
+Type: "สวนน้ำ",
+FID_1: 1370.0,
+CHANGWAT: "เชียงใหม่",
+PROVINCE_1: "Chiang mai",
+REGION: "ภาคเหนือ",
+level: "🌟🌟🌟🌟",
+},
+geometry: {
+type: "MultiPoint",
+coordinates: [[ 98.891973495219521,18.705053608501508]],
+},
+},
+],
+};
+//add marker and popup
+var tourLayer = L.geoJSON(tourpoint, {
+pointToLayer: function (feature, latlng) {
+return L.marker(latlng).bindPopup(feature.properties.Name);
+},
+onEachFeature: function (feature, layer) {
+layer.on("mouseover", function () {
+document
+.getElementById(feature.properties.FID_1)
+.classList.add("w3-red");
+});
+
+ layer.on("mouseout", function () {
+document
+.getElementById(feature.properties.FID_1)
+.classList.remove("w3-red");
+});
+},
+}).addTo(map);
+// link lable with popup control
+var cont = "";
+cont += "<table class='w3-table w3-striped'>";
+cont += "<tr>";
+cont += "<th>ชื่อแหล่งท่องเที่ยว</th>";
+cont += "<th>ประเภท</th>";
+cont += "<th>ระดับ</th>";
+cont += "</tr>";
+for (let i in tourpoint.features) {
+cont += "<tr id=" + tourpoint.features[i].properties.FID_1 + ">";
+cont += "<td>" + tourpoint.features[i].properties.Name + "</td>";
+cont += "<td>" + tourpoint.features[i].properties.Type + "</td>";
+cont += "<td>" + tourpoint.features[i].properties.level + "</td>";
+cont += "</tr>";
+}
+cont += "</table>";
+console.log(cont);
+document.getElementById("content").innerHTML = cont;
+//create polygon
+var polygonGeoJson =
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "stroke": "#ed0202",
+        "stroke-width": 10,
+        "stroke-opacity": 20,
+        "fill": "#f20d0d",
+        "fill-opacity": 9
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              98.80073547363281,
+              18.762663239344132
+            ],
+            [
+              98.86871337890624,
+              18.64038960627509
+            ],
+            [
+              99.05410766601562,
+              18.6690147530808
+            ],
+            [
+              99.14955139160155,
+              18.76786441131959
+            ],
+            [
+              99.11796569824217,
+              18.84261351075609
+            ],
+            [
+              99.04586791992188,
+              18.921226648208464
+            ],
+            [
+              98.94355773925781,
+              18.967987183782
+            ],
+            [
+              98.79867553710936,
+              18.93746442964186
+            ],
+            [
+              98.73687744140624,
+              18.854960163049142
+            ],
+            [
+              98.80073547363281,
+              18.762663239344132
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
+
+var polygonLayer = L.geoJSON(polygonGeoJson, {
+style: function (feature) {
+return {fillcolor:'pink',weight:2,
+       opacity: 1,
+       color:'red',//Outline bgcolor
+       fillOpacity: 0.4 };
+},
+onEachFeature: function (feature, layer) {
+layer.bindPopup(feature.properties.name);
+
+ layer.on("mouseover", function () {
+layer.openPopup();
+});
+
+ layer.on("mouseout", function () {
+layer.closePopup();
+});
+},
+});
+
+//group point+polygon layer
+var overlays = {
+สถานที่ท่องเที่ยว:tourLayer,
+ขอบเขตอุทยาน:polygonLayer
+};
+
+//Create layer control
+L.control.layers(baseMaps,overlays).addTo(map);
+
+</script>
+
+</body>
+</html>
